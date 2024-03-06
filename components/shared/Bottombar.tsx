@@ -3,11 +3,10 @@
 import { sidebarLinks } from "@/constans";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export default function Bottombar() {
   const pathname = usePathname();
-  const router = useRouter();
   return (
     <section className="bottombar">
       <div className="bottombar_container">

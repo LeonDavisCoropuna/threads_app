@@ -1,8 +1,4 @@
-import ThreadCard from "@/components/cards/ThreadCard";
-import UserCard from "@/components/cards/UserCard";
-import { Comment } from "@/components/forms/Comment";
-import { fetchThread } from "@/lib/actions/thread.actions";
-import { fetchUser, fetchUsers, getActivity } from "@/lib/actions/user.actions";
+import { fetchUser, getActivity } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
