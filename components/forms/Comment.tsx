@@ -15,7 +15,7 @@ import {
 } from "@/lib/validations/user";
 import { Input } from "../ui/input";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { addCommentToThread } from "@/lib/actions/thread.actions";
 
 interface Props {
@@ -25,7 +25,6 @@ interface Props {
 }
 
 export function Comment({ currentUserId, currentUserImg, threadId }: Props) {
-  const router = useRouter();
   const pathname = usePathname();
   const form = useForm({
     resolver: zodResolver(CommentValidation),
