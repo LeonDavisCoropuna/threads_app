@@ -5,26 +5,18 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "../ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "../ui/button";
 import {
-  CommentValidation,
-  PostThreadValidation,
-  UserValidation,
+  CommentValidation
 } from "@/lib/validations/user";
 import { Input } from "../ui/input";
 import Image from "next/image";
-import { ChangeEvent, useState } from "react";
-import { Textarea } from "../ui/textarea";
-import { isBase64Image } from "@/lib/utils";
-import { useUploadThing } from "@/lib/uploadThing";
 import { usePathname, useRouter } from "next/navigation";
-import { updateUser } from "@/lib/actions/user.actions";
-import { addCommentToThread, createThread } from "@/lib/actions/thread.actions";
+import { addCommentToThread } from "@/lib/actions/thread.actions";
 
 interface Props {
   threadId: string;

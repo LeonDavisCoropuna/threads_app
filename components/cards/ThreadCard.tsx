@@ -34,7 +34,6 @@ export default function ThreadCard({
   createdAt,
   currentUserId,
   id,
-  key,
   parentId,
   isComment,
 }: Props) {
@@ -107,7 +106,9 @@ export default function ThreadCard({
             </div>
           </div>
         </div>
-        {!isComment && community && (
+      </div>
+      
+      {!isComment && community && (
           <Link
             href={`/communities/${community.id}`}
             className="mt-5 flex items-center"
@@ -124,7 +125,6 @@ export default function ThreadCard({
             />
           </Link>
         )}
-      </div>
     </article>
   );
 }
