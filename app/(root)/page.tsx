@@ -3,9 +3,10 @@ import { currentUser } from "@clerk/nextjs";
 import { fetchPosts } from "@/lib/actions/thread.actions";
 import ThreadCard from "@/components/cards/ThreadCard";
 
-export default async function Home() {
+export default async function Page() {
   const result = await fetchPosts(1, 30);
   const user = await currentUser();
+  
   return (
     <>
       <h1 className="head-text text-left">Home</h1>
@@ -25,6 +26,7 @@ export default async function Home() {
                 community={post.community}
                 createdAt={post.createdAt}
                 comments={post.children}
+                isComment={false}
               />
             ))}
           </>

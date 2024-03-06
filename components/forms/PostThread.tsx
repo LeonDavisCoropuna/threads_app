@@ -1,5 +1,4 @@
 "use client";
-import { currentUser } from "@clerk/nextjs";
 import {
   Form,
   FormControl,
@@ -12,20 +11,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "../ui/button";
-import { PostThreadValidation, UserValidation } from "@/lib/validations/user";
-import { Input } from "../ui/input";
-import Image from "next/image";
-import { ChangeEvent, useState } from "react";
+import { PostThreadValidation } from "@/lib/validations/user";
+import { useState } from "react";
 import { Textarea } from "../ui/textarea";
-import { isBase64Image } from "@/lib/utils";
 import { useUploadThing } from "@/lib/uploadThing";
 import { usePathname, useRouter } from "next/navigation";
-import { updateUser } from "@/lib/actions/user.actions";
 import { createThread } from "@/lib/actions/thread.actions";
+import { useOrganization } from "@clerk/nextjs";
 
 export default function PostThread({ userId }: { userId: string }) {
-  const [files, setFiles] = useState<File[]>([]);
-  const { startUpload } = useUploadThing("media");
+  const { organization } = useOrganization();
   const router = useRouter();
   const pathname = usePathname();
   const form = useForm({
@@ -39,7 +34,7 @@ export default function PostThread({ userId }: { userId: string }) {
     await createThread({
       text: values.thread,
       author: userId,
-      communityId: null,
+      communityId: organization ? organization.id : null,
       path: pathname,
     });
     router.push("/");
